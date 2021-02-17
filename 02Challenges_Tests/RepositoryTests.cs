@@ -8,12 +8,20 @@ namespace _02Challenges_Tests
     public class RepositoryTests
     {
         private ClaimRepository _repo;
-        private Claim _claims;
+        private Claim newClaim;
+
+
+        [TestInitialize]
+        public void Seed()
+        {
+            _repo = new ClaimRepository();
+            newClaim = new Claim();
+        }
 
         [TestMethod]
         public void AddClaimToQueueTest()
         {
-            _repo.AddClaimToQueue(_claims);
+            _repo.AddClaimToQueue(newClaim);
 
             int expected = 1;
             int actual = _repo.GetAllClaims().Count;

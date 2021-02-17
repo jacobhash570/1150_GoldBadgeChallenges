@@ -10,6 +10,14 @@ namespace _03Challenge_Repository
     {
         private Dictionary<int, List<string>> _badgeinfo = new Dictionary<int, List<string>>();
 
+        public int Count
+        {
+            get
+            {
+                return _badgeinfo.Count;
+            }
+        }
+
         public void AddBadgeToDictionary(EmployeeBadge newbadge)
         {
             _badgeinfo.Add(newbadge.BadgeID, newbadge.DoorAccess);

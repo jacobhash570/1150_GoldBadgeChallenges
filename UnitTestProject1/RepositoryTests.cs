@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace UnitTestProject1
+namespace _01Challenge_Test
 {
     [TestClass]
     public class RepositoryTests
@@ -10,9 +10,10 @@ namespace UnitTestProject1
         private MenuRepository _menuRepository;
         private MenuItem _Hotdog;
 
-        [TestMethod]
+        [TestInitialize]
         public void Seed()
         {
+            _menuRepository = new MenuRepository();
             _Hotdog = new MenuItem(2, "Hotdog", "Sausage in a bun.", 1.00m, "Sausage, Bread, Ketchup, Mustard");
             MenuItem Cheeseburger = new MenuItem(
                 1,
@@ -21,36 +22,34 @@ namespace UnitTestProject1
                 3.00m,
                 "Bread, Beef, Cheeese, Tomato, Lettuce, Onion");
             _menuRepository.AddItemToList(Cheeseburger);
+            _menuRepository.AddItemToList(_Hotdog);
         }
         [TestMethod]
-        public void AddTest()
+        public void AddItemToListTest()
         {
-            MenuItem item = new MenuItem(
+            MenuItem Hamburger = new MenuItem(
                 2,
                 "Hamburger",
                 "Beef on a bun.",
                 2.00m,
                 "Bread, Beef, Tomato, Lettuce, Onion");
-            bool wasAdded = _menuRepository.AddItemToList(item);
-            Console.WriteLine(_menuRepository.Count);
-            Console.WriteLine(wasAdded);
-            Console.WriteLine(item.MealName);
+            bool wasAdded = _menuRepository.AddItemToList(Hamburger);
 
             Assert.IsTrue(wasAdded);
 
         }
 
         [TestMethod]
-        public void GetItemByName_CorrectResult()
+        public void GetItemByNameTest()
         {
-            MenuItem searchResult = _menuRepository.GetItemByName("hotdog");
+            MenuItem searchResult = _menuRepository.GetItemByName("Hotdog");
             Assert.AreEqual(searchResult, _Hotdog);
         }
 
         [TestMethod]
-        public void DeleteContent_ShouldDelete()
+        public void DeleteContentTest()
         {
-            bool wasRemoved = _menuRepository.RemoveItemFromList("hotdog");
+            bool wasRemoved = _menuRepository.RemoveItemFromList("Hotdog");
             Assert.IsTrue(wasRemoved);
 
         }
