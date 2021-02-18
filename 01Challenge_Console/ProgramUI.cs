@@ -48,7 +48,6 @@ namespace _01Challenge_Console
                         Console.WriteLine("Please Enter a Valid Number: ");
                         break;
                 }
-                Console.WriteLine("Please Press Any Key to Continue: ");
                 Console.WriteLine();
 
             }
@@ -77,6 +76,7 @@ namespace _01Challenge_Console
             newItem.MealPrice = decimal.Parse(priceString);
 
             _menuRepo.AddItemToList(newItem);
+            Console.Clear();
         }
         private void ViewAllItems()
         {

@@ -94,12 +94,12 @@ namespace _03Challenge_Console
             Console.WriteLine($"BadgeID Number: {badge.BadgeID}");
             foreach (string door in badge.DoorAccess)
             {
-                Console.WriteLine($"BadgeID Number: {badge.BadgeID} has access to", door);
+                Console.WriteLine($"BadgeID Number: {badge.DoorAccess} has access to" + door);
             }
 
             Console.WriteLine("Please select an option:\n" +
-                "1. Remove Door Access\n" +
-                "2. Add Door Access");
+                    "1. Remove Door Access\n" +
+                    "2. Add Door Access");
             string userInput = Console.ReadLine();
             switch (userInput)
             {
